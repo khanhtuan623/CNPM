@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
-<title>Car</title>
+<title>Schedule</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" href="fonts/icomoon/style.css">
 
@@ -56,7 +56,7 @@
 
 				<div class="col-6 col-xl-2">
 					<h1 class="mb-0">
-						<a href="#" class="text-black h2 mb-0">New Car</a>
+						<a href="#" class="text-black h2 mb-0">New Schedule</a>
 					</h1>
 				</div>
 
@@ -91,50 +91,68 @@
 
 					<form:form action="${action}" class="p-5 bg-white" method="POST"
 						enctype="multipart/form-data" modelAttribute="${attribute}">
+						<form:hidden path="idSchedule"/>
 						<div class="row form-group">
 							<div class="col-md-12 mb-3 mb-md-0 style="text-align:center;>
 								<div style="width: 40%; margin-left: 0%;">
-									<label class="font-weight-bold" for="fullname">ID Of Car</label>
-									<form:input path="idCar" type="text" id="fullname"
+									<label class="font-weight-bold" for="fullname">NAME OF CHANNEL</label>
+									<form:input path="nameChannel" type="text" id="fullname"
 										class="form-control" required="required"
-										placeholder="eg. 99B1-18801" />
+										placeholder="eg. HCM-HN" />
 								</div>
 							</div>
 						</div>
 						<div class="row form-group">
 							<div class="col-md-12 mb-3 mb-md-0 style="text-align:center;>
 								<div style="width: 40%; margin-left: 0%;">
-									<label class="font-weight-bold" for="location">Driver-1</label>
-									<form:select path="driver1" name="driver1" id="driver1"
-										class="form-control">
-										<c:forEach var="driverList" items="${driverList}">
-										<form:option value="${driverList.idDriver}">${driverList.idDriver}&mdash;${driverList.nameDriver}</form:option>
-										</c:forEach>
-									</form:select>
+									<label class="font-weight-bold" for="space">SPACE OF CHANNEL</label>
+									<form:input path="space" type="text" id="space"
+										class="form-control" required="required"
+										placeholder="eg. 1700km" />
 								</div>
 							</div>
 						</div>
 						<div class="row form-group">
 							<div class="col-md-12 mb-3 mb-md-0 style="text-align:center;>
 								<div style="width: 40%; margin-left: 0%;">
-									<label class="font-weight-bold" for="location">Driver-2</label>
-									<form:select path="driver2" name="driver2" id="driver2"
-										class="form-control">
-										<c:forEach var="driverList" items="${driverList}">
-										<form:option value="${driverList.idDriver}">${driverList.idDriver}&mdash;${driverList.nameDriver}</form:option>
-										</c:forEach>
-									</form:select>
+									<label class="font-weight-bold" for="number">NUMBER OF CAR</label>
+									<form:input path="number" type="text" id="number"
+										class="form-control" required="required"
+										placeholder="eg. 99" />
 								</div>
 							</div>
 						</div>
-
 						<div class="row form-group">
-							<div class="col-md-12">
-								<h3>Other Info</h3>
+							<div class="col-md-12 mb-3 mb-md-0 style="text-align:center;>
+								<div style="width: 40%; margin-left: 0%;">
+									<label class="font-weight-bold" for="timeOfDeparture">TIME DEPARTURE</label>
+									<form:input path="timeOfDeparture" type="text" id="timeOfDeparture"
+										class="form-control" required="required"
+										placeholder="eg. 9:00 4/4/2019" />
+								</div>
 							</div>
-							<div class="col-md-12 mb-3 mb-md-0">
-								<form:textarea path="other" name="" class="form-control" id=""
-									cols="30" rows="7" required="required" />
+						</div>
+						<div class="row form-group">
+							<div class="col-md-12 mb-3 mb-md-0 style="text-align:center;>
+								<div style="width: 40%; margin-left: 0%;">
+									<label class="font-weight-bold" for="arrivalTime">ARRIVAL TIME</label>
+									<form:input path="arrivalTime" type="text" id="arrivalTime"
+										class="form-control" required="required"
+										placeholder="eg. 9:00 4/4/2019" />
+								</div>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-12 mb-3 mb-md-0 style="text-align:center;>
+								<div style="width: 40%; margin-left: 0%;">
+									<label class="font-weight-bold" for="idCar">ID OF CAR</label>
+									<form:select path="idCar" name="idCar" id="idCar"
+										class="form-control">
+										<c:forEach var="carList" items="${carList}">
+										<form:option value="${carList.idCar}">${carList.idCar}</form:option>
+										</c:forEach>
+									</form:select>
+								</div>
 							</div>
 						</div>
 						<div class="row form-group">

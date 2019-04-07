@@ -37,7 +37,7 @@ public class ScheduleServicesImp implements ScheduleServices {
 	@Override
 	public Schedule getSchedule(int id) {
 		// TODO Auto-generated method stub
-		return this.getSchedule(id);
+		return this.scheduleDao.getSchedule(id);
 	}
 
 }

@@ -44,7 +44,7 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="/CarList/${passCode}" class="simple-text">
+                <a href="/ScheduleList/${passCode}" class="simple-text">
                    Car Rental
                 </a>
             </div>
@@ -55,12 +55,12 @@
                         <p>Driver List</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="/CarList/${passCode}">
                         <p>Car List</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="/ScheduleList/${passCode}">
                         <p>Schedule List</p>
                     </a>
@@ -106,24 +106,30 @@
                         <div class="card">
 
                             <div class="header">
-                                <h4 class="title" style="float: left;">Car</h4>
-                                <a style="margin-left: 80%" href="/ShowNewCar" class="btn btn-secondary btn-sm" role="button">Add New Car</a>                            <div class="content table-responsive table-full-width">
+                                <h4 class="title" style="float: left;">Schedule</h4>
+                                <a style="margin-left: 80%" href="/ShowNewSchedule" class="btn btn-secondary btn-sm" role="button">Add New Schedule</a>                            <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
                                     <thead>
-                                        <th>ID CAR</th>
-                                    	<th>Driver-1</th>
-                                    	<th>Driver-2</th>
-                                    	<th>Other</th>
+                                        <th>ID</th>
+                                    	<th>NAME CHANNEL</th>
+                                    	<th>SPACE</th>
+                                    	<th>NUMBER OF CAR</th>
+                                    	<th>TIME OF DEPARTURE</th>
+                                    	<th>ARRIVAL TIME</th>
+                                    	<th>CAR</th>
                                     </thead>
                                     <tbody>
-                                    <c:forEach var="carList" items="${carList}">
+                                    <c:forEach var="scheduleList" items="${scheduleList}">
                                         <tr>
-                                        	<td>${carList.idCar}</td>
-                                        	<td>${carList.driver1}</td>
-                                        	<td>${carList.driver2}</td>
-                                            <td>${carList.other}</td>
+                                        	<td>${scheduleList.idSchedule}</td>
+                                        	<td>${scheduleList.nameChannel}</td>
+                                        	<td>${scheduleList.space}</td>
+                                            <td>${scheduleList.number}</td>
+                                            <td>${scheduleList.timeOfDeparture}</td>
+                                            <td>${scheduleList.arrivalTime}</td>
+                                            <td>${scheduleList.idCar}</td>
                                             <td>
-                                                <a href="/Get-Car/${carList.idCar}">Edit</a>
+                                                <a href="/Get-Schedule/${scheduleList.idSchedule}">Edit</a>
                                             </td>
                                             <td >
                                                 <a href="" style="color: red;">Delete</a>
@@ -132,6 +138,7 @@
                                         </c:forEach>
                                     </tbody>
                                 </table>
+
                             </div>
                         </div>
                     </div>

@@ -44,7 +44,7 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="/CarList/${passCode}" class="simple-text">
+                <a href="/TicketFareList/${passCode}" class="simple-text">
                    Car Rental
                 </a>
             </div>
@@ -55,7 +55,7 @@
                         <p>Driver List</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="/CarList/${passCode}">
                         <p>Car List</p>
                     </a>
@@ -65,7 +65,7 @@
                         <p>Schedule List</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="/TicketFareList/${passCode}">
                         <p>Ticket-Fare List</p>
                     </a>
@@ -106,24 +106,28 @@
                         <div class="card">
 
                             <div class="header">
-                                <h4 class="title" style="float: left;">Car</h4>
-                                <a style="margin-left: 80%" href="/ShowNewCar" class="btn btn-secondary btn-sm" role="button">Add New Car</a>                            <div class="content table-responsive table-full-width">
+                                <h4 class="title" style="float: left;">Ticket Fare</h4>
+                                <a style="margin-left: 80%" href="/ShowNewTicketFare" class="btn btn-secondary btn-sm" role="button">Add New TicketFare</a>                            <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
                                     <thead>
-                                        <th>ID CAR</th>
-                                    	<th>Driver-1</th>
-                                    	<th>Driver-2</th>
-                                    	<th>Other</th>
+                                        <th>ID</th>
+                                    	<th>ID SCHEDULE</th>
+                                    	<th>STARTING POST</th>
+                                    	<th>DESTINATION</th>
+                                    	<th>PRICE</th>
+                                    	<th>NOTE</th>
                                     </thead>
                                     <tbody>
-                                    <c:forEach var="carList" items="${carList}">
+                                    <c:forEach var="ticketFareList" items="${ticketFareList}">
                                         <tr>
-                                        	<td>${carList.idCar}</td>
-                                        	<td>${carList.driver1}</td>
-                                        	<td>${carList.driver2}</td>
-                                            <td>${carList.other}</td>
+                                        	<td>${ticketFareList.idTicket}</td>
+                                        	<td>${ticketFareList.idSchedule}</td>
+                                        	<td>${ticketFareList.startingPost}</td>
+                                            <td>${ticketFareList.destination}</td>
+                                            <td>${ticketFareList.price}</td>
+                                            <td>${ticketFareList.note}</td>
                                             <td>
-                                                <a href="/Get-Car/${carList.idCar}">Edit</a>
+                                                <a href="/Get-TicketFare/${ticketFareList.idTicket}">Edit</a>
                                             </td>
                                             <td >
                                                 <a href="" style="color: red;">Delete</a>

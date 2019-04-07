@@ -14,26 +14,27 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tdt.carrental.model.Schedule;
+import com.tdt.carrental.model.TicketFare;
 
 @Repository
 @Transactional
-public class ScheduleDaoImp implements ScheduleDao {
-
+public class TicketFareDaoImp implements TicketFareDao {
+	
 	@Autowired
 	private SessionFactory sessionFactory;
+
 	@Override
-	public boolean registrationSchedule(Schedule schedule) {
+	public boolean registrationTicketFare(TicketFare ticketFare) {
 		try {
 			Session session = sessionFactory.getCurrentSession();
 			// session.beginTransaction();
-			Schedule registrationSchedule=new Schedule();
-			registrationSchedule.setNameChannel(schedule.getNameChannel());
-			registrationSchedule.setSpace(schedule.getSpace());
-			registrationSchedule.setNumber(schedule.getNumber());
-			registrationSchedule.setTimeOfDeparture(schedule.getTimeOfDeparture());
-			registrationSchedule.setArrivalTime(schedule.getArrivalTime());
-			registrationSchedule.setIdCar(schedule.getIdCar());
-			session.save(registrationSchedule);
+			TicketFare registrationTicketFare=new TicketFare();
+			registrationTicketFare.setIdSchedule(ticketFare.getIdSchedule());
+			registrationTicketFare.setStartingPost(ticketFare.getStartingPost());
+			registrationTicketFare.setDestination(ticketFare.getDestination());
+			registrationTicketFare.setPrice(ticketFare.getPrice());
+			registrationTicketFare.setNote(ticketFare.getNote());
+			session.save(registrationTicketFare);
 			// session.getTransaction().commit();
 			return true;
 		} catch (Exception e) {
@@ -44,21 +45,21 @@ public class ScheduleDaoImp implements ScheduleDao {
 	}
 
 	@Override
-	public List<Schedule> listSchedule() {
+	public List<TicketFare> listTicketFare() {
 		Session session = sessionFactory.getCurrentSession();
 	      CriteriaBuilder cb = session.getCriteriaBuilder();
-	      CriteriaQuery<Schedule> cq = cb.createQuery(Schedule.class);
-	      Root<Schedule> root = cq.from(Schedule.class);
+	      CriteriaQuery<TicketFare> cq = cb.createQuery(TicketFare.class);
+	      Root<TicketFare> root = cq.from(TicketFare.class);
 	      cq.select(root);
-	      Query<Schedule> query = session.createQuery(cq);
+	      Query<TicketFare> query = session.createQuery(cq);
 	      return query.getResultList();
 	}
 
 	@Override
-	public Boolean updateSchedule(Schedule schedule) {
+	public Boolean updateTicketFare(TicketFare ticketFare) {
 		try {
 			Session session = sessionFactory.getCurrentSession();
-			session.update(schedule);
+			session.update(ticketFare);
 			return true;
 		} catch (Exception e) {
 			e.getMessage();
@@ -68,10 +69,10 @@ public class ScheduleDaoImp implements ScheduleDao {
 	}
 
 	@Override
-	public Schedule getSchedule(int id) {
+	public TicketFare getTicketFare(int id) {
 		try {
 			Session session = sessionFactory.getCurrentSession();
-			Schedule model = session.byId(Schedule.class).load(id);
+			TicketFare model = session.byId(TicketFare.class).load(id);
 			return model;
 		} catch (Exception e) {
 			e.printStackTrace();

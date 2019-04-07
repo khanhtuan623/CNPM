@@ -91,50 +91,59 @@
 
 					<form:form action="${action}" class="p-5 bg-white" method="POST"
 						enctype="multipart/form-data" modelAttribute="${attribute}">
+						<form:hidden path="idTicket"/>
 						<div class="row form-group">
 							<div class="col-md-12 mb-3 mb-md-0 style="text-align:center;>
 								<div style="width: 40%; margin-left: 0%;">
-									<label class="font-weight-bold" for="fullname">ID Of Car</label>
-									<form:input path="idCar" type="text" id="fullname"
+									<label class="font-weight-bold" for="location">ID SCHEDULE</label>
+									<form:select path="idSchedule" name="idSchedule" id="idSchedule"
+										class="form-control">
+										<c:forEach var="scheduleList" items="${scheduleList}">
+										<form:option value="${scheduleList.idSchedule}">${scheduleList.idSchedule} &mdash; ${scheduleList.nameChannel}</form:option>
+										</c:forEach>
+									</form:select>
+								</div>
+							</div>
+						</div>
+						
+						<div class="row form-group">
+							<div class="col-md-12 mb-3 mb-md-0 style="text-align:center;>
+								<div style="width: 40%; margin-left: 0%;">
+									<label class="font-weight-bold" for="fullname">STARTING POST</label>
+									<form:input path="startingPost" type="text" id="startingPost"
 										class="form-control" required="required"
-										placeholder="eg. 99B1-18801" />
+										placeholder="eg. Ben Xe Mien Dong,292 Dinh Bo Linh,P.26,Q.Binh Thanh,TP.HCM" />
 								</div>
 							</div>
 						</div>
 						<div class="row form-group">
 							<div class="col-md-12 mb-3 mb-md-0 style="text-align:center;>
 								<div style="width: 40%; margin-left: 0%;">
-									<label class="font-weight-bold" for="location">Driver-1</label>
-									<form:select path="driver1" name="driver1" id="driver1"
-										class="form-control">
-										<c:forEach var="driverList" items="${driverList}">
-										<form:option value="${driverList.idDriver}">${driverList.idDriver}&mdash;${driverList.nameDriver}</form:option>
-										</c:forEach>
-									</form:select>
+									<label class="font-weight-bold" for="fullname">DESTINATION</label>
+									<form:input path="destination" type="text" id="destination"
+										class="form-control" required="required"
+										placeholder="eg. Ben Xe My Dinh,My Dinh-Nam Tu Liem-Ha Noi" />
 								</div>
 							</div>
 						</div>
 						<div class="row form-group">
 							<div class="col-md-12 mb-3 mb-md-0 style="text-align:center;>
 								<div style="width: 40%; margin-left: 0%;">
-									<label class="font-weight-bold" for="location">Driver-2</label>
-									<form:select path="driver2" name="driver2" id="driver2"
-										class="form-control">
-										<c:forEach var="driverList" items="${driverList}">
-										<form:option value="${driverList.idDriver}">${driverList.idDriver}&mdash;${driverList.nameDriver}</form:option>
-										</c:forEach>
-									</form:select>
+									<label class="font-weight-bold" for="price">PRICE</label>
+									<form:input path="price" type="text" id="price"
+										class="form-control" required="required"
+										placeholder="eg. 99000" />
 								</div>
 							</div>
 						</div>
 
 						<div class="row form-group">
 							<div class="col-md-12">
-								<h3>Other Info</h3>
+								<h3>NOTE</h3>
 							</div>
 							<div class="col-md-12 mb-3 mb-md-0">
-								<form:textarea path="other" name="" class="form-control" id=""
-									cols="30" rows="7" required="required" />
+								<form:textarea path="note" name="" class="form-control" id="note"
+									cols="20" rows="7" required="required" />
 							</div>
 						</div>
 						<div class="row form-group">

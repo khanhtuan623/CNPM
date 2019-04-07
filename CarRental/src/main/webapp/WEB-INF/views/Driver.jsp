@@ -44,7 +44,7 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="" class="simple-text">
+                <a href="/DriverList/${passCode}" class="simple-text">
                    Car Rental
                 </a>
             </div>
@@ -61,8 +61,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/Channel/${passCode}">
-                        <p>Channel List</p>
+                    <a href="/ScheduleList/${passCode}">
+                        <p>Schedule List</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/TicketFareList/${passCode}">
+                        <p>Ticket-Fare List</p>
                     </a>
                 </li>
             </ul>
