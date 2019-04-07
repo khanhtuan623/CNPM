@@ -13,27 +13,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tdt.carrental.model.TicketFare;
+import com.tdt.carrental.model.Customer;
 
 @Repository
 @Transactional
-public class TicketFareDaoImp implements TicketFareDao {
-	
+public class CustomerDaoImp implements CustomerDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	@Override
-	public boolean registrationTicketFare(TicketFare ticketFare) {
+	public boolean registrationCustomer(Customer cus) {
 		try {
 			Session session = sessionFactory.getCurrentSession();
 			// session.beginTransaction();
-			TicketFare registrationTicketFare=new TicketFare();
-			registrationTicketFare.setIdSchedule(ticketFare.getIdSchedule());
-			registrationTicketFare.setStartingPost(ticketFare.getStartingPost());
-			registrationTicketFare.setDestination(ticketFare.getDestination());
-			registrationTicketFare.setPrice(ticketFare.getPrice());
-			registrationTicketFare.setNote(ticketFare.getNote());
-			session.save(registrationTicketFare);
+			Customer customerRes=new Customer();
+			customerRes.setTel(cus.getTel());
+			customerRes.setFullName(cus.getFullName());
+			customerRes.setAddress(cus.getAddress());
+			customerRes.setEmail(cus.getEmail());
+			customerRes.setIdNumber(cus.getIdNumber());
+			session.save(customerRes);
 			// session.getTransaction().commit();
 			return true;
 		} catch (Exception e) {
@@ -44,21 +43,21 @@ public class TicketFareDaoImp implements TicketFareDao {
 	}
 
 	@Override
-	public List<TicketFare> listTicketFare() {
+	public List<Customer> listCustomer() {
 		Session session = sessionFactory.getCurrentSession();
 	      CriteriaBuilder cb = session.getCriteriaBuilder();
-	      CriteriaQuery<TicketFare> cq = cb.createQuery(TicketFare.class);
-	      Root<TicketFare> root = cq.from(TicketFare.class);
+	      CriteriaQuery<Customer> cq = cb.createQuery(Customer.class);
+	      Root<Customer> root = cq.from(Customer.class);
 	      cq.select(root);
-	      Query<TicketFare> query = session.createQuery(cq);
+	      Query<Customer> query = session.createQuery(cq);
 	      return query.getResultList();
 	}
 
 	@Override
-	public Boolean updateTicketFare(TicketFare ticketFare) {
+	public Boolean updateCustomer(Customer cus) {
 		try {
 			Session session = sessionFactory.getCurrentSession();
-			session.update(ticketFare);
+			session.update(cus);
 			return true;
 		} catch (Exception e) {
 			e.getMessage();
@@ -68,10 +67,10 @@ public class TicketFareDaoImp implements TicketFareDao {
 	}
 
 	@Override
-	public TicketFare getTicketFare(int id) {
+	public Customer getCustomer(String tel) {
 		try {
 			Session session = sessionFactory.getCurrentSession();
-			TicketFare model = session.byId(TicketFare.class).load(id);
+			Customer model = session.byId(Customer.class).load(tel);
 			return model;
 		} catch (Exception e) {
 			e.printStackTrace();

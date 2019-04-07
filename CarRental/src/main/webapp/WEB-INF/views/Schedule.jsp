@@ -70,6 +70,16 @@
                         <p>Ticket-Fare List</p>
                     </a>
                 </li>
+                <li>
+                    <a href="/CustomerList/${passCode}">
+                        <p>Customer List</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ShoppingCartList/${passCode}">
+                        <p>ShoppingCart List</p>
+                    </a>
+                </li>
             </ul>
     	</div>
     </div>

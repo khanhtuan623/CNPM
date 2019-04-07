@@ -15,13 +15,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tdt.carrental.model.Car;
+import com.tdt.carrental.model.Customer;
 import com.tdt.carrental.model.Driver;
 import com.tdt.carrental.model.Schedule;
+import com.tdt.carrental.model.ShoppingCart;
 import com.tdt.carrental.model.TicketFare;
 import com.tdt.carrental.model.User;
 import com.tdt.carrental.services.CarServices;
+import com.tdt.carrental.services.CustomerServices;
 import com.tdt.carrental.services.DriverSevices;
 import com.tdt.carrental.services.ScheduleServices;
+import com.tdt.carrental.services.ShoppingCartServices;
 import com.tdt.carrental.services.TicketFareServices;
 import com.tdt.carrental.services.UserServices;
 
@@ -42,8 +46,15 @@ public class HomeController {
 
 	@Autowired
 	private ScheduleServices scheduleServices;
+	
 	@Autowired
 	private TicketFareServices ticketFareServices;
+	
+	@Autowired
+	private CustomerServices customerServices;
+	
+	@Autowired
+	private ShoppingCartServices shoppingCartServices;
 	
 	private static int passCodeRandom;
 
@@ -306,7 +317,7 @@ public class HomeController {
 		return "home";
 	}
 
-	/* SHOW LIST CAR */
+	/* SHOW LIST TICKET-FARE */
 	@RequestMapping(value = "/TicketFareList/{passCode}")
 	public String ticketFareListList(@PathVariable int passCode, Model model) {
 		if (passCodeRandom == passCode) {
@@ -319,7 +330,109 @@ public class HomeController {
 			return "redirect:/";
 		}
 	}
+	
+	/* SHOW VIEW NEW CUSTOMER */
+	@RequestMapping(value = "/ShowNewCustomer")
+	public String showNewCustomer(Model model) {
+		model.addAttribute("registrationCustomer", new Customer());
+		model.addAttribute("action", "/RegistrationCustomer");
+		model.addAttribute("attribute", "registrationCustomer");
+		return "NewCustomer";
+	}
 
+	/* REGISTRATION CUSTOMER */
+	@RequestMapping(value = "/RegistrationCustomer", method = RequestMethod.POST)
+	public String registrationCustomer(@Validated @ModelAttribute("registrationCustomer") Customer customer) {
+		if (this.customerServices.registrationCustomer(customer) == true) {
+			return "redirect:/CustomerList/" + passCodeRandom;
+		} else {
+			return "redirect:/";
+		}
+	}
+
+	/*---GET CUSTOMER BY ID---------*/
+	@RequestMapping(value = "/Get-Customer/{tel}")
+	public String getCustomer(@PathVariable String tel, Model model) {
+		Customer customer = this.customerServices.getCustomer(tel);
+		model.addAttribute("customer", customer);
+		model.addAttribute("action", "/Edit-Save-Customer");
+		model.addAttribute("attribute", "customer");
+		return "NewTicketFare";
+	}
+
+	/* SAVE TICKET-FARE AFTER EDIT */
+	@RequestMapping(value = "/Edit-Save-Customer", method = RequestMethod.POST)
+	public String saveEditCustomer(@ModelAttribute("customer") Customer customer) {
+		if (this.customerServices.updateCustomer(customer) == true) {
+			return "redirect:/CustomerList/" + passCodeRandom;
+		}
+		return "home";
+	}
+
+	/* SHOW LIST CUSTOMER */
+	@RequestMapping(value = "/CustomerList/{passCode}")
+	public String customerList(@PathVariable int passCode, Model model) {
+		if (passCodeRandom == passCode) {
+			List<Customer> customerList = this.customerServices.listCustomer();
+			model.addAttribute("passCode", passCode);
+			model.addAttribute("customerList", customerList);
+			return "Customer";
+
+		} else {
+			return "redirect:/";
+		}
+	}
+	/* SHOW VIEW NEW SHOPPING CART */
+	@RequestMapping(value = "/ShowNewShoppingCart")
+	public String showNewShoppingCart(Model model) {
+		model.addAttribute("registrationShoppingCart", new ShoppingCart());
+		model.addAttribute("action", "/RegistrationShoppingCart");
+		model.addAttribute("attribute", "registrationShoppingCart");
+		return "NewShoppingCart";
+	}
+
+	/* REGISTRATION CUSTOMER */
+	@RequestMapping(value = "/RegistrationShoppingCart", method = RequestMethod.POST)
+	public String registrationShoppingCart(@Validated @ModelAttribute("registrationShoppingCart") ShoppingCart shoppingCart) {
+		if (this.shoppingCartServices.registrationShoppingCart(shoppingCart) == true) {
+			return "redirect:/ShoppingCartList/" + passCodeRandom;
+		} else {
+			return "redirect:/";
+		}
+	}
+
+	/*---GET SHOPPING CART BY ID---------*/
+	@RequestMapping(value = "/Get-ShoppingCart/{id}")
+	public String getShoppingCart(@PathVariable int id, Model model) {
+		ShoppingCart shoppingCart = this.shoppingCartServices.getShoppingCart(id);
+		model.addAttribute("shoppingCart", shoppingCart);
+		model.addAttribute("action", "/Edit-Save-ShoppingCart");
+		model.addAttribute("attribute", "shoppingCart");
+		return "NewTicketFare";
+	}
+
+	/* SAVE TICKET-FARE AFTER EDIT */
+	@RequestMapping(value = "/Edit-Save-ShoppingCart", method = RequestMethod.POST)
+	public String saveEditShoppingCart(@ModelAttribute("shoppingCart") ShoppingCart shoppingCart) {
+		if (this.shoppingCartServices.updateShoppingCart(shoppingCart) == true) {
+			return "redirect:/ShoppingCartList/" + passCodeRandom;
+		}
+		return "home";
+	}
+
+	/* SHOW LIST CUSTOMER */
+	@RequestMapping(value = "/ShoppingCartList/{passCode}")
+	public String shoppingCartList(@PathVariable int passCode, Model model) {
+		if (passCodeRandom == passCode) {
+			List<ShoppingCart> shoppingCartList = this.shoppingCartServices.listShoppingCart();
+			model.addAttribute("passCode", passCode);
+			model.addAttribute("shoppingCartList", shoppingCartList);
+			return "ShoppingCart";
+
+		} else {
+			return "redirect:/";
+		}
+	}
 	/* Test */
 	@RequestMapping(value = "/test")
 	public String test(Model model) {

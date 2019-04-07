@@ -44,18 +44,18 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="/DriverList/${passCode}" class="simple-text">
+                <a href="/CustomerList/${passCode}" class="simple-text">
                    Car Rental
                 </a>
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li >
                     <a href="/DriverList/${passCode}">
                         <p>Driver List</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="/CarList/${passCode}">
                         <p>Car List</p>
                     </a>
@@ -116,26 +116,26 @@
                         <div class="card">
 
                             <div class="header">
-                                <h4 class="title" style="float: left;">Driver</h4>
-                                <a style="margin-left: 80%" href="/ShowNewDriver" class="btn btn-secondary btn-sm" role="button">Add New Driver</a>                            <div class="content table-responsive table-full-width">
+                                <h4 class="title" style="float: left;">Customer</h4>
+                                <a style="margin-left: 80%" href="/ShowNewCustomer" class="btn btn-secondary btn-sm" role="button">Add New Customer</a>                            <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
                                     <thead>
-                                        <th>ID</th>
-                                    	<th>NAME</th>
-                                    	<th>TEL</th>
-                                    	<th>EXP</th>
-                                    	<th>OTHER</th>
+                                        <th>TEL</th>
+                                    	<th>FULL NAME</th>
+                                    	<th>ADDRESS</th>
+                                    	<th>EMAIL</th>
+                                    	<th>IDENTIFY NUMBER</th>
                                     </thead>
                                     <tbody>
-                                    <c:forEach var="driverList" items="${driverList}">
+                                    <c:forEach var="customerList" items="${customerList}">
                                         <tr>
-                                        	<td>${driverList.idDriver}</td>
-                                        	<td>${driverList.nameDriver}</td>
-                                        	<td>${driverList.tel}</td>
-                                            <td>${driverList.exp}</td>
-                                            <td>${driverList.other}</td>
+                                        	<td>${customerList.tel}</td>
+                                        	<td>${customerList.fullName}</td>
+                                        	<td>${customerList.address}</td>
+                                            <td>${customerList.email}</td>
+                                            <td>${customerList.idNumber}</td>
                                             <td>
-                                                <a href="/Get-Driver/${driverList.idDriver}">Edit</a>
+                                                <a href="/Get-Customer/${customerList.tel}">Edit</a>
                                             </td>
                                             <td >
                                                 <a href="" style="color: red;">Delete</a>
@@ -144,7 +144,6 @@
                                         </c:forEach>
                                     </tbody>
                                 </table>
-
                             </div>
                         </div>
                     </div>

@@ -44,18 +44,18 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="/DriverList/${passCode}" class="simple-text">
+                <a href="/ShoppingCartsList/${passCode}" class="simple-text">
                    Car Rental
                 </a>
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li >
                     <a href="/DriverList/${passCode}">
                         <p>Driver List</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="/CarList/${passCode}">
                         <p>Car List</p>
                     </a>
@@ -116,26 +116,32 @@
                         <div class="card">
 
                             <div class="header">
-                                <h4 class="title" style="float: left;">Driver</h4>
-                                <a style="margin-left: 80%" href="/ShowNewDriver" class="btn btn-secondary btn-sm" role="button">Add New Driver</a>                            <div class="content table-responsive table-full-width">
+                                <h4 class="title" style="float: left;">Shopping-Cart</h4>
+                                <a style="margin-left: 80%" href="/ShowNewCar" class="btn btn-secondary btn-sm" role="button">Add New Shopping-Cart</a>                            <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
                                     <thead>
                                         <th>ID</th>
-                                    	<th>NAME</th>
+                                    	<th>DATE OF DEPARTURE</th>
+                                    	<th>ID TICKET</th>
+                                    	<th>CHAIR</th>
+                                    	<th>TOTAL</th>
                                     	<th>TEL</th>
-                                    	<th>EXP</th>
-                                    	<th>OTHER</th>
+                                    	<th>ID METHOD</th>
+                                    	<th>STATUS</th>
                                     </thead>
                                     <tbody>
-                                    <c:forEach var="driverList" items="${driverList}">
+                                    <c:forEach var="shoppingCartList" items="${shoppingCartList}">
                                         <tr>
-                                        	<td>${driverList.idDriver}</td>
-                                        	<td>${driverList.nameDriver}</td>
-                                        	<td>${driverList.tel}</td>
-                                            <td>${driverList.exp}</td>
-                                            <td>${driverList.other}</td>
+                                        	<td>${shoppingCartList.idNo}</td>
+                                        	<td>${shoppingCartList.dateOfDeparture}</td>
+                                        	<td>${shoppingCartList.idTicket}</td>
+                                            <td>${shoppingCartList.chair}</td>
+                                            <td>${shoppingCartList.total}</td>
+                                            <td>${shoppingCartList.tel}</td>
+                                            <td>${shoppingCartList.idMethod}</td>
+                                            <td>${shoppingCartList.status}</td>
                                             <td>
-                                                <a href="/Get-Driver/${driverList.idDriver}">Edit</a>
+                                                <a href="/Get-ShoppingCart/${shoppingCartList.idNo}">Edit</a>
                                             </td>
                                             <td >
                                                 <a href="" style="color: red;">Delete</a>
@@ -144,7 +150,6 @@
                                         </c:forEach>
                                     </tbody>
                                 </table>
-
                             </div>
                         </div>
                     </div>
