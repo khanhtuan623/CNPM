@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost
--- Thời gian đã tạo: Th4 20, 2019 lúc 03:19 PM
+-- Thời gian đã tạo: Th5 15, 2019 lúc 01:35 PM
 -- Phiên bản máy phục vụ: 10.1.32-MariaDB
 -- Phiên bản PHP: 7.2.5
 
@@ -35,14 +35,6 @@ CREATE TABLE `CAR` (
   `Other` varchar(3000) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Đang đổ dữ liệu cho bảng `CAR`
---
-
-INSERT INTO `CAR` (`IdCar`, `Driver1`, `Driver2`, `Other`) VALUES
-('99B1-00188', 1002, 1004, 'thieu thong tin'),
-('99B1-18801', 1000, 1001, 'chua co thong tin');
-
 -- --------------------------------------------------------
 
 --
@@ -56,13 +48,6 @@ CREATE TABLE `CUSTOMER` (
   `Email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `IdentifyNumber` varchar(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Đang đổ dữ liệu cho bảng `CUSTOMER`
---
-
-INSERT INTO `CUSTOMER` (`Tel`, `FullName`, `Address`, `Email`, `IdentifyNumber`) VALUES
-('0363674897', 'Tuan', '6 nguyen thi thap quan 7', 'khanhtuan697@gmail.com', '125714623');
 
 -- --------------------------------------------------------
 
@@ -83,9 +68,6 @@ CREATE TABLE `DRIVER` (
 --
 
 INSERT INTO `DRIVER` (`IdDriver`, `NameDriver`, `Tel`, `Experience`, `Other`) VALUES
-(1000, 'Tran Khanh Tuan', '0363674897', 'co hon 1 nam kinh nghiem trong linh vuc giao thong van tai', 'thieu thong tin'),
-(1001, 'Nguyen Thanh Tuan', '0987654321', 'khong co kinh nghiem', 'thieu thong tin'),
-(1002, 'TRAN HOANG PHONG', '097124124', 'chua co kinh nghiem', 'thieu thong tin'),
 (1003, 'Nguyen Phuong Nam', '0129312323', 'chua co kinh nghiem', 'thieu thong tin'),
 (1004, 'Tran Hoang Long', '0192321321', 'chua co kinh nghiem', 'thieu thong tin'),
 (1005, 'Hoang Thanh Phong', '0999999999', 'chua co kinh nghiem', 'thieu thong tin'),
@@ -112,7 +94,6 @@ CREATE TABLE `SCHEDULE` (
 --
 
 INSERT INTO `SCHEDULE` (`IdSchedule`, `NameChannel`, `Space`, `Number`, `TimeOfDeparture`, `ArrivalTime`, `IdCar`) VALUES
-(1000, 'HCM-HN', '1700km', 99, '2019-04-02 01:00:00.000000', '2019-04-02 03:00:00.000000', '99B1-18801'),
 (1001, 'HCM-NHATRANG', '500km', 10, '8:00 20/04/2019', '12:00 20/04/2019', '99B1-00188');
 
 -- --------------------------------------------------------
@@ -132,13 +113,6 @@ CREATE TABLE `SHOPPINGCART` (
   `Status` smallint(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Đang đổ dữ liệu cho bảng `SHOPPINGCART`
---
-
-INSERT INTO `SHOPPINGCART` (`IdNo`, `DateOfDeparture`, `IdTicket`, `Chair`, `Total`, `Tel`, `IdMethod`, `Status`) VALUES
-(1000, '2019-04-11', 0, '24', 2, '0363674897', 'cash', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -153,13 +127,6 @@ CREATE TABLE `TICKETFARE` (
   `Price` int(10) NOT NULL,
   `Note` varchar(500) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Đang đổ dữ liệu cho bảng `TICKETFARE`
---
-
-INSERT INTO `TICKETFARE` (`IdTicket`, `IdSchedule`, `StartingPost`, `Destination`, `Price`, `Note`) VALUES
-(1000, 1001, 'bến xe hoa mai quận 1', 'bến xe nha trang,TP.Nha Trang', 99000, 'thieu thong tin');
 
 -- --------------------------------------------------------
 
