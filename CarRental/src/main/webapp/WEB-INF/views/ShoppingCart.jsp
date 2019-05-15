@@ -55,7 +55,7 @@
                         <p>Driver List</p>
                     </a>
                 </li>
-                <li class="active">
+                <li >
                     <a href="/CarList/${passCode}">
                         <p>Car List</p>
                     </a>
@@ -75,7 +75,7 @@
                         <p>Customer List</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="/ShoppingCartList/${passCode}">
                         <p>ShoppingCart List</p>
                     </a>
@@ -144,7 +144,7 @@
                                                 <a href="/Get-ShoppingCart/${shoppingCartList.idNo}">Edit</a>
                                             </td>
                                             <td >
-                                                <a href="" style="color: red;">Delete</a>
+                                                <a href="/deleteShoppingCart/${passCode}/${shoppingCartList.idNo}" style="color: red;">Delete</a>
                                             </td>
                                         </tr>
                                         </c:forEach>

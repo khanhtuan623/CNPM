@@ -10,6 +10,9 @@ public interface DriverDao {
 	public abstract List<Driver> listDriver();
 
 	public abstract Boolean updateDriver(Driver driver);
+
 	public abstract Driver getDriver(Long id);
+	
+	public abstract void deleteDriver(Long id);
 
 }

@@ -13,4 +13,5 @@ public interface DriverSevices {
 
 	public abstract Driver getDriver(Long id);
 
+	public abstract void deleterDriver(Long id);
 }

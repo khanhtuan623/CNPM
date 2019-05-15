@@ -12,4 +12,6 @@ public interface ScheduleServices {
 	public abstract Boolean updateSchedule(Schedule schedule);
 
 	public abstract Schedule getSchedule(int id);
+	
+	public abstract void deleterSchedule(int id);
 }

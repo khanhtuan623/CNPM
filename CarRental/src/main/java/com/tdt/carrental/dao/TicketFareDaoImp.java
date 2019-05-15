@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tdt.carrental.model.ShoppingCart;
 import com.tdt.carrental.model.TicketFare;
 
 @Repository
@@ -78,6 +79,17 @@ public class TicketFareDaoImp implements TicketFareDao {
 			// TODO: handle exception
 		}
 		return null;
+	}
+
+	@Override
+	public void deleteTicketFare(int id) {
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			TicketFare model = session.byId(TicketFare.class).load(id);
+			session.delete(model);
+		} catch (Exception e) {
+			e.getMessage();
+		}
 	}
 
 }

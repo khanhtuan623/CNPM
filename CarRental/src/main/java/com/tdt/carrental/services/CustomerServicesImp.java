@@ -39,4 +39,9 @@ public class CustomerServicesImp implements CustomerServices {
 		return this.customerDao.getCustomer(tel);
 	}
 
+	@Override
+	public void deleteCustomer(String tel) {
+		this.customerDao.deleteCustomer(tel);
+	}
+
 }

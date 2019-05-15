@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tdt.carrental.model.Car;
 import com.tdt.carrental.model.Driver;
 
 @Repository
@@ -77,6 +78,18 @@ public class DriverDaoImp implements DriverDao {
 			// TODO: handle exception
 		}
 		return null;
+	}
+
+	@Override
+	public void deleteDriver(Long id) {
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			Driver model = session.byId(Driver.class).load(id);
+			session.delete(model);
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		
 	}
 
 }

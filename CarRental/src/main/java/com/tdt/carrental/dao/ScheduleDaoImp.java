@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tdt.carrental.model.Car;
 import com.tdt.carrental.model.Schedule;
 
 @Repository
@@ -78,6 +79,18 @@ public class ScheduleDaoImp implements ScheduleDao {
 			// TODO: handle exception
 		}
 		return null;
+	}
+
+	@Override
+	public void deleteSchedule(int id) {
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			Schedule model = session.byId(Schedule.class).load(id);
+			session.delete(model);
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		
 	}
 
 }

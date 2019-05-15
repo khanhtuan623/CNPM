@@ -142,7 +142,7 @@
                                                 <a href="/Get-Schedule/${scheduleList.idSchedule}">Edit</a>
                                             </td>
                                             <td >
-                                                <a href="" style="color: red;">Delete</a>
+                                                <a href="/deleteSchedule/${passCode}/${scheduleList.idSchedule}" style="color: red;">Delete</a>
                                             </td>
                                         </tr>
                                         </c:forEach>

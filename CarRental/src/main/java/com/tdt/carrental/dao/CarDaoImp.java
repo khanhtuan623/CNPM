@@ -14,7 +14,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tdt.carrental.model.Car;
-import com.tdt.carrental.model.Driver;
 
 @Repository
 @Transactional
@@ -78,5 +77,17 @@ public class CarDaoImp implements CarDao {
 			// TODO: handle exception
 		}
 		return null;
+	}
+
+	@Override
+	public void deleteCar(String id) {
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			Car model = session.byId(Car.class).load(id);
+			session.delete(model);
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		
 	}
 }

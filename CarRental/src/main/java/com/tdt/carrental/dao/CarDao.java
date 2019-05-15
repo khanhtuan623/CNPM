@@ -13,4 +13,6 @@ public interface CarDao {
 	public abstract Boolean updateCar(Car car);
 
 	public abstract Car getCar(String id);
+	
+	public abstract void deleteCar(String id);
 }

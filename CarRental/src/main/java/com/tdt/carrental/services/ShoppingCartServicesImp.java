@@ -40,4 +40,10 @@ public class ShoppingCartServicesImp implements ShoppingCartServices {
 		return this.shoppingCartDao.getShoppingCart(id);
 	}
 
+	@Override
+	public void deleteShoppingCart(int id) {
+		this.shoppingCartDao.deleteShoppingCart(id);
+		
+	}
+
 }

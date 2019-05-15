@@ -12,4 +12,6 @@ public interface ScheduleDao {
 	public abstract Boolean updateSchedule(Schedule schedule);
 
 	public abstract Schedule getSchedule(int id);
+	
+	public abstract void deleteSchedule(int id);
 }

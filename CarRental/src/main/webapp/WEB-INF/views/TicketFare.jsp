@@ -140,7 +140,7 @@
                                                 <a href="/Get-TicketFare/${ticketFareList.idTicket}">Edit</a>
                                             </td>
                                             <td >
-                                                <a href="" style="color: red;">Delete</a>
+                                                <a href="/deleteTicketFare/${passCode}/${ticketFareList.idTicket}" style="color: red;">Delete</a>
                                             </td>
                                         </tr>
                                         </c:forEach>

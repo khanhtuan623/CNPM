@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tdt.carrental.model.Schedule;
 import com.tdt.carrental.model.ShoppingCart;
 
 @Repository
@@ -80,6 +81,18 @@ public class ShoppingCartDaoImp implements ShoppingCartDao {
 			// TODO: handle exception
 		}
 		return null;
+	}
+
+	@Override
+	public void deleteShoppingCart(int id) {
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			ShoppingCart model = session.byId(ShoppingCart.class).load(id);
+			session.delete(model);
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		
 	}
 
 }

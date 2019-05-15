@@ -40,4 +40,9 @@ public class DriverServicesImp implements DriverSevices {
 		return this.driverDao.getDriver(id);
 	}
 
+	@Override
+	public void deleterDriver(Long id) {
+			this.driverDao.deleteDriver(id);		
+	}
+
 }

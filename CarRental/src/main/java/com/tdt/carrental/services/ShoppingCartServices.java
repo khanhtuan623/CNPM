@@ -12,4 +12,6 @@ public interface ShoppingCartServices {
 	public abstract Boolean updateShoppingCart(ShoppingCart shoppingCart);
 
 	public abstract ShoppingCart getShoppingCart(int id);
+	
+	public abstract void deleteShoppingCart(int id);
 }

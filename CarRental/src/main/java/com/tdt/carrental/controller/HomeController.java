@@ -433,6 +433,46 @@ public class HomeController {
 			return "redirect:/";
 		}
 	}
+	
+	/*DELETE CAR*/
+	@RequestMapping(value="deleteCar/{passCode}/{id}", method = RequestMethod.GET)
+	public String deleteCar(@PathVariable String passCode,@PathVariable String id) {
+		this.carServices.deleteCar(id);
+		return "redirect:/CarList/" +passCode;
+	}
+	/*DELETE DRIVER*/
+	@RequestMapping(value="deleteDriver/{passCode}/{id}", method = RequestMethod.GET)
+	public String deleteDriver(@PathVariable String passCode,@PathVariable Long id) {
+		this.driverServices.deleterDriver(id);
+		return "redirect:/DriverList/" +passCode;
+	}
+	/*DELETE SCHEDULE*/
+	@RequestMapping(value="deleteSchedule/{passCode}/{id}", method = RequestMethod.GET)
+	public String deleteSchedule(@PathVariable String passCode,@PathVariable int id) {
+		this.scheduleServices.deleterSchedule(id);
+		return "redirect:/ScheduleList/" +passCode;
+	}
+	
+	/*DELETE SHOPPINGCART*/
+	@RequestMapping(value="deleteShoppingCart/{passCode}/{id}", method = RequestMethod.GET)
+	public String deleteShoppingCart(@PathVariable String passCode,@PathVariable int id) {
+		this.shoppingCartServices.deleteShoppingCart(id);
+		return "redirect:/ShoppingCartList/" +passCode;
+	}
+	/*DELETE CUSTOMER*/
+	@RequestMapping(value="deleteCustomer/{passCode}/{id}", method = RequestMethod.GET)
+	public String deleteCustomer(@PathVariable String passCode,@PathVariable String id) {
+		this.customerServices.deleteCustomer(id);
+		return "redirect:/CustomerList/" +passCode;
+	}
+	
+	/*DELETE TICKETFARE*/
+	@RequestMapping(value="deleteTicketFare/{passCode}/{id}", method = RequestMethod.GET)
+	public String deleteTicketFare(@PathVariable String passCode,@PathVariable int id) {
+		this.ticketFareServices.deleteTicketFare(id);
+		return "redirect:/TicketFareList/" +passCode;
+	}
+	
 	/* Test */
 	@RequestMapping(value = "/test")
 	public String test(Model model) {

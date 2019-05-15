@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tdt.carrental.model.Customer;
+import com.tdt.carrental.model.Schedule;
 
 @Repository
 @Transactional
@@ -77,6 +78,18 @@ public class CustomerDaoImp implements CustomerDao {
 			// TODO: handle exception
 		}
 		return null;
+	}
+
+	@Override
+	public void deleteCustomer(String tel) {
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			Customer model = session.byId(Customer.class).load(tel);
+			session.delete(model);
+		} catch (Exception e) {
+			e.getMessage();
+		}
+				
 	}
 
 }

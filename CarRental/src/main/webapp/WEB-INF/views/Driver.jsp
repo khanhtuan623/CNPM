@@ -138,7 +138,7 @@
                                                 <a href="/Get-Driver/${driverList.idDriver}">Edit</a>
                                             </td>
                                             <td >
-                                                <a href="" style="color: red;">Delete</a>
+                                                <a href="/deleteDriver/${passCode}/${driverList.idDriver}" style="color: red;">Delete</a>
                                             </td>
                                         </tr>
                                         </c:forEach>

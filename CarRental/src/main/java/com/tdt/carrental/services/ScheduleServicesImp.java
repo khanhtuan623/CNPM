@@ -40,4 +40,10 @@ public class ScheduleServicesImp implements ScheduleServices {
 		return this.scheduleDao.getSchedule(id);
 	}
 
+	@Override
+	public void deleterSchedule(int id) {
+		this.scheduleDao.deleteSchedule(id);
+		
+	}
+
 }

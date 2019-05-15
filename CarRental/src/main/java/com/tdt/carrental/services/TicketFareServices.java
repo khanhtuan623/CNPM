@@ -12,4 +12,6 @@ public interface TicketFareServices {
 	public abstract Boolean updateTicketFare(TicketFare ticketFare);
 
 	public abstract TicketFare getTicketFare(int id);
+	
+	public abstract void deleteTicketFare(int id);
 }

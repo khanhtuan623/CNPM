@@ -40,4 +40,10 @@ public class CarServicesImp implements CarServices{
 		return this.carDao.getCar(id);
 	}
 
+	@Override
+	public void deleteCar(String id) {
+		this.carDao.deleteCar(id);
+		
+	}
+
 }

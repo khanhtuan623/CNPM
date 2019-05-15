@@ -136,7 +136,7 @@
                                                 <a href="/Get-Car/${carList.idCar}">Edit</a>
                                             </td>
                                             <td >
-                                                <a href="" style="color: red;">Delete</a>
+                                                <a href="/deleteCar/${passCode}/${carList.idCar}" style="color: red;">Delete</a>
                                             </td>
                                         </tr>
                                         </c:forEach>

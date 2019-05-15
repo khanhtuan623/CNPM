@@ -12,4 +12,6 @@ public interface CustomerDao {
 	public abstract Boolean updateCustomer(Customer cus);
 
 	public abstract Customer getCustomer(String tel);
+	
+	public abstract void deleteCustomer(String tel);
 }

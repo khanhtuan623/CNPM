@@ -39,4 +39,10 @@ public class TicketFareServicesImp implements TicketFareServices {
 		return this.ticketFareDao.getTicketFare(id);
 	}
 
+	@Override
+	public void deleteTicketFare(int id) {
+		this.ticketFareDao.deleteTicketFare(id);
+		
+	}
+
 }
